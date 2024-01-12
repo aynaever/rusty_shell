@@ -5,13 +5,12 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
     let program = Command::new(&args[1])
-            .arg("rust is great")
+            .args(args.clone().drain(2..))
             .spawn();
 
     match program {
         Ok(mut child) => {
             child.wait().expect("failed to wait the child process");
-            println!("succefully created the spawned process");
         }
         Err(err) => {
             println!("error: {}", err);
