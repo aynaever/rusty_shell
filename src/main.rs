@@ -1,11 +1,8 @@
 mod core;
 
 use std::env;
-
+use crate::core::sh_command;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-
-    core::sh_command(&args);
+    sh_command();
 }
-
