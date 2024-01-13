@@ -1,8 +1,7 @@
 mod core;
 
-use std::env;
-use crate::core::sh_command;
+use crate::core::sh_prompt;
 
 fn main() {
-    sh_command();
+    sh_prompt();
 }

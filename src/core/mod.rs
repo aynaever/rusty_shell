@@ -2,7 +2,7 @@ use std::process::Command;
 use std::io;
 use std::io::Write;
 
-pub fn sh_command() {
+pub fn sh_prompt() {
     let mut program_buffer = String::new();
     let prompt: Vec<String>;
 
