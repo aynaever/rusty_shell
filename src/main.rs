@@ -1,7 +1,7 @@
 mod core;
 
-use crate::core::sh_prompt;
+use crate::core::shell;
 
 fn main() {
-    sh_prompt();
+    shell();
 }

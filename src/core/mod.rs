@@ -2,7 +2,7 @@ use std::process::Command;
 use std::io;
 use std::io::Write;
 
-pub fn sh_prompt() {
+fn sh_prompt() {
     let mut program_buffer = String::new();
     let prompt: Vec<String>;
 
@@ -26,5 +26,11 @@ pub fn sh_prompt() {
         Err(err) => {
             println!("error: {}", err);
         }
+    }
+}
+
+pub fn shell() {
+    loop {
+        sh_prompt();
     }
 }
