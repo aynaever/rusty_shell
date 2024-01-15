@@ -2,6 +2,8 @@ use std::process::Command;
 use std::io;
 use std::io::Write;
 
+use crate::builtins::is_builtin;
+
 fn sh_prompt() {
     let mut program_buffer = String::new();
     let prompt: Vec<String>;
@@ -14,6 +16,7 @@ fn sh_prompt() {
         .expect("Error reading from command line");
 
     prompt = program_buffer.split_whitespace().map(String::from).collect();
+    is_builtin(&prompt[0]);
     let program = Command::new(&prompt[0])
             .args(prompt.clone().drain(1..))
             .spawn();
