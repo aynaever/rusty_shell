@@ -11,3 +11,4 @@ A simple basic shell written in Rust.
 ## Working on
 - Pipes not implemented yet.
 - Combining commands, or chaining commands through & and | operators, not implemented yet.
+- Implement a customizble shell prompt, depends on the username, host, current path.
