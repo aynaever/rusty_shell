@@ -16,6 +16,9 @@ pub fn cd(command: &Vec<String>) {
             new_path = Path::new(&old_path);
             println!("{}", &new_path.display());
         }
+        else if &command[1] == "~" {
+            new_path = Path::new(&home_dir);
+        }
         else {
             new_path = Path::new(&command[1]);
         }
