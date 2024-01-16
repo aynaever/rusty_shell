@@ -14,6 +14,7 @@ pub fn cd(command: &Vec<String>) {
     if command.len() >= 2 {
         if &command[1] == "-" {
             new_path = Path::new(&old_path);
+            println!("{}", &new_path.display());
         }
         else {
             new_path = Path::new(&command[1]);
@@ -23,6 +24,7 @@ pub fn cd(command: &Vec<String>) {
         new_path = Path::new(&home_dir);
     }
 
+    env::set_var("OLDPWD", env::current_dir().unwrap());
     env::set_current_dir(new_path)
         .expect("Error in change the current working directory");
 }
