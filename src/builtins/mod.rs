@@ -8,7 +8,7 @@ pub fn is_builtin(command: &Vec<String>) -> bool {
     }
     else if command[0] == "cd" {
         cd(&command[1]);
-        println!("path: {}",&command[1]);
+        return true;
     }
      return false;
 }
@@ -21,5 +21,4 @@ fn cd(path: &String) {
     let new_path = Path::new(path);
     env::set_current_dir(new_path)
         .expect("Error in change the current working directory");
-    println!("current path : {}", env::current_dir().unwrap().display());
 }

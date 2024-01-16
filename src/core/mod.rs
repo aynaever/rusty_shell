@@ -16,20 +16,20 @@ fn sh_prompt() {
         .expect("Error reading from command line");
 
     prompt = program_buffer.split_whitespace().map(String::from).collect();
-    is_builtin(&prompt);
-    let program = Command::new(&prompt[0])
-            .args(prompt.clone().drain(1..))
-            .spawn();
-
-
-    match program {
-        Ok(mut child) => {
-            child.wait().expect("failed to wait the child process");
-        }
-        Err(err) => {
-            println!("error: {}", err);
+    if !is_builtin(&prompt) {
+        let program = Command::new(&prompt[0])
+                .args(prompt.clone().drain(1..))
+                .spawn();
+        match program {
+            Ok(mut child) => {
+                child.wait().expect("Error in waiting the child process");
+            }
+            Err(_) => {
+                eprintln!("Error in creating child program");
+            }
         }
     }
+
 }
 
 pub fn shell() {
