@@ -10,7 +10,11 @@ pub fn is_builtin(command: &Vec<String>) -> bool {
         cd(&command[1]);
         return true;
     }
-     return false;
+    else if command[0] == "pwd" {
+        pwd();
+        return true;
+    }
+    return false;
 }
 
 fn exit() {
@@ -21,4 +25,10 @@ fn cd(path: &String) {
     let new_path = Path::new(path);
     env::set_current_dir(new_path)
         .expect("Error in change the current working directory");
+}
+
+fn pwd() {
+    let curr_path = env::current_dir();
+
+    println!("{}", &curr_path.unwrap().display());
 }
