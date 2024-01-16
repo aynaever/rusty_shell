@@ -16,7 +16,7 @@ fn sh_prompt() {
         .expect("Error reading from command line");
 
     prompt = program_buffer.split_whitespace().map(String::from).collect();
-    is_builtin(&prompt[0]);
+    is_builtin(&prompt);
     let program = Command::new(&prompt[0])
             .args(prompt.clone().drain(1..))
             .spawn();
