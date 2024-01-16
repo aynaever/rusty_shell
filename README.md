@@ -8,6 +8,7 @@ A simple basic shell written in Rust.
 	- pwd
 	- exit
 
+- Implement the $PATH1
 ## Working on
 - Pipes not implemented yet.
 - Combining commands, or chaining commands through & and | operators, not implemented yet.

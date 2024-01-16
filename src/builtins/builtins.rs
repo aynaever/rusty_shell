@@ -8,13 +8,21 @@ pub fn exit() {
 
 pub fn cd(command: &Vec<String>) {
     let new_path: &Path;
+    let old_path: String = env::var("OLDPWD").unwrap();
     let home_dir = env::home_dir().unwrap();
-    if command.len() > 2 {
-        new_path = Path::new(&command[1]);
+
+    if command.len() >= 2 {
+        if &command[1] == "-" {
+            new_path = Path::new(&old_path);
+        }
+        else {
+            new_path = Path::new(&command[1]);
+        }
     }
     else {
         new_path = Path::new(&home_dir);
     }
+
     env::set_current_dir(new_path)
         .expect("Error in change the current working directory");
 }
