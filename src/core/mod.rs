@@ -3,6 +3,7 @@ use std::io;
 use std::io::Write;
 
 use crate::builtins::is_builtin;
+mod pipeline;
 
 fn sh_prompt() {
     let mut program_buffer = String::new();
@@ -14,6 +15,8 @@ fn sh_prompt() {
 
     io::stdin().read_line(&mut program_buffer)
         .expect("Error reading from command line");
+
+    pipeline::parse_prompt(&program_buffer);
 
     prompt = program_buffer.split_whitespace().map(String::from).collect();
     if !is_builtin(&prompt) {
